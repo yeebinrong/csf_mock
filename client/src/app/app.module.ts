@@ -3,7 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './routes/home.component';
+import { OrderComponent } from './routes/order.component';
+import { PayComponent} from './routes/pay.component';
 import { MaterialModule } from './material.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,7 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    OrderComponent,
+    PayComponent
   ],
   imports: [
     BrowserModule,

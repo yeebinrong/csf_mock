@@ -1,0 +1,39 @@
+<mat-toolbar color="primary">
+    <span>My bitcoin app</span>
+</mat-toolbar>
+<form #logform="ngForm" [formGroup]="loginForm" (ngSubmit)="processForm(logform)">
+    <div class="div">
+        <mat-form-field>
+            <input type="text" matInput formControlName="name" placeholder="Enter your name.">
+            <mat-error *ngIf="loginForm.get('name').invalid">Please enter a valid name.</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="div">
+        <mat-form-field>
+            <input type="text" matInput formControlName="contact" placeholder="Enter your phone number.">
+            <mat-error *ngIf="loginForm.get('contact').invalid">Please enter a valid phone number.</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="div">
+        <mat-form-field>
+            <input matInput [max]="minDate" [matDatepicker]="dobpicker" formControlName="dob" placeholder="Date of birth." [value]="25-11-1996">
+            <mat-datepicker-toggle matSuffix [for]="dobpicker"></mat-datepicker-toggle>
+            <mat-datepicker #dobpicker startView="multi-year"></mat-datepicker>
+            <mat-error *ngIf="loginForm.get('dob').invalid">Please enter a valid date.</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="div">
+        <mat-radio-group formControlName="gender">
+            Gender
+            <mat-radio-button value="Male">Male</mat-radio-button>
+            <mat-radio-button value="Female">Female</mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <div class="div">
+        <button type="submit" color="primary" mat-raised-button [disabled]="loginForm.invalid">Sign In</button>
+    </div>
+</form>
+
+
+
+

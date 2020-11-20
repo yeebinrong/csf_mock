@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormGroupDirective, Validators} from '@angular/forms';
 import * as moment from 'moment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,16 +10,11 @@ import * as moment from 'moment';
 })
 export class HomeComponent implements OnInit {
   loginForm: FormGroup;
-  orderForm: FormGroup;
   currDate = new Date ();
   minDate;
-  orderDate;
-  isProceed = false;
-  isBuying = true;
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
-    this.orderDate = new Date().toLocaleDateString();
     this.minDate = new Date(new Date().setFullYear(new Date().getFullYear() - 21));
     this.loginForm = this.fb.group({
       name: this.fb.control('bin rong', [Validators.required, Validators.pattern(/^[a-zA-Z ]*$/)]),
@@ -26,26 +22,10 @@ export class HomeComponent implements OnInit {
       gender: this.fb.control('Male', [Validators.required]),
       dob: this.fb.control(this.minDate, [Validators.required]),
     });
-
-    this.orderForm = this.fb.group({
-      date: this.fb.control(this.orderDate),
-      type: this.fb.control(null, [Validators.required]),
-      unit: this.fb.control('', [Validators.required, Validators.pattern(/^[0-9]*$/)]),
-    });
-  }
-
-  resetForm(f) {
-    f.resetForm({date:this.orderDate});
   }
 
   processForm(f ) {
-    // f.resetForm({date:this.orderDate});
-    if (f.value.type == 'buy') {
-      this.isProceed = true;
-      this.isBuying = true;
-    } else if (f.value.type == 'sell') {
-      this.isProceed = true;
-      this.isBuying = false;
-    }
+    console.info("proceeding to order")
+    this.router.navigate(['/order']);
   }
 }
