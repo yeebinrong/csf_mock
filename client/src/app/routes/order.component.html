@@ -1,44 +1,40 @@
-<mat-toolbar color="primary">
-    <span>My bitcoin app</span>
-    <button mat-raised-button routerLink="/" routerLinkActive="active" >Back</button>
-</mat-toolbar>
-<form #form="ngForm" [formGroup]="orderForm" (ngSubmit)="processForm(form)">
-    <div class="div">
-        <mat-form-field>
-            Order Date {{orderDate}}
-            <input type="text" matInput [hidden]="true" formControlName="date">
-        </mat-form-field>
-    </div>
-    <div class="div">
-        <mat-radio-group formControlName="type">
-            Order Type
-            <mat-radio-button value="buy">Buy</mat-radio-button>
-            <mat-radio-button value="sell">Sell</mat-radio-button>
-        </mat-radio-group>
-    </div>
-    <div class="div">
-        <mat-form-field>
-            <!-- DISPLAY BITCOIN TO USD PRICE -->
-            USD/BTC $10/0.1
-            <input type="text" matInput [hidden]="true" placeholder="SGD/BTC $10/0.1">
-        </mat-form-field>
-    </div>
-    <div class="div">
-        <mat-form-field>
-            <!-- DISPLAY TOTAL PRICE TO CURRENT QTY -->
-            SGD/BTC $10/0.1
-            <input type="text" matInput [hidden]="true" placeholder="SGD/BTC $10/0.1">
-        </mat-form-field>
-    </div>
-    <div class="div">
-        <mat-form-field>
-            <input type="text" matInput formControlName="unit" placeholder="No. of units.">
-            <mat-error *ngIf="orderForm.get('unit').invalid">Please enter a valid number.</mat-error>
-        </mat-form-field>
-    </div>
-    <div class="div">
-        <button color="primary" type="submit" mat-raised-button [disabled]="orderForm.invalid">Proceed</button>
-        <button color="primary" type="button" (click)="resetForm(form)" mat-raised-button>Reset</button>
-    </div>
-</form>
+<div fxFill fxLayout="column">
+    <mat-toolbar color="primary" fxFlex="10" fxLayout="row">
+        <span fxFlex="80">My bitcoin app</span>
+        <button mat-raised-button routerLink="/" routerLinkActive="active" fxFlex="20" >Back</button>
+    </mat-toolbar>
+    <form #form="ngForm" fxLayout="row" fxFlex [formGroup]="orderForm" (ngSubmit)="processForm(form)">
+        <div fxFlex="15"></div>
+        <div fxFlex="70" fxLayout="column" fxLayoutAlign="start stretch">
+            <div fxFlex="3"></div>
+            <div fxLayout="column" fxFlex="70" fxLayoutAlign="space-evenly stretch">
+                <mat-form-field>
+                    Order Date {{orderDate}}
+                    <input type="text" matInput [hidden]="true" formControlName="date">
+                </mat-form-field>
+                <mat-radio-group formControlName="type" fxLayout="column">
+                    Order Type
+                    <mat-radio-button class="p" value="buy">Buy</mat-radio-button>
+                    <mat-radio-button class="p" value="sell">Sell</mat-radio-button>
+                </mat-radio-group>
+                <mat-form-field>
+                    <!-- DISPLAY BITCOIN TO USD PRICE -->
+                    USD/BTC $10/0.1
+                    <input type="text" matInput [hidden]="true">
+                </mat-form-field>
+                <mat-form-field>
+                    <!-- DISPLAY TOTAL PRICE TO CURRENT QTY -->
+                    SGD/BTC $10/0.1
+                    <input type="text" matInput [hidden]="true">
+                </mat-form-field>
+                <mat-form-field>
+                    <input type="text" matInput formControlName="unit" placeholder="No. of units.">
+                    <mat-error *ngIf="orderForm.get('unit').invalid">Please enter a valid number.</mat-error>
+                </mat-form-field>
+                <button color="primary" type="submit" mat-raised-button [disabled]="orderForm.invalid">Proceed</button>
+                <button color="primary" type="button" (click)="resetForm(form)" mat-raised-button>Reset</button>
+            </div>
+        </div>
+    </form>
+</div>
 

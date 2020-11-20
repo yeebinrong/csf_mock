@@ -1,24 +1,26 @@
-<mat-toolbar color="primary">
-    <span>My bitcoin app</span>
-    <button mat-raised-button routerLink="/order" routerLinkActive="active" >Back</button>
-</mat-toolbar>
-<mat-spinner></mat-spinner>
-<ng-container *ngIf="isBuying">
-    <div >
-        <!-- BUYING -->
-        BUYING<br>
-        equivalent amount of price and bitcoin  received decimal <br>
-        display qr code for paylah/paynow <br>
-        allow user to input bitcoin address <br>
-        Bitcoin will be transferred once the SGD funds are wired across.
-    </div>
-</ng-container>
-<ng-container *ngIf="!isBuying">
-    <div>
-        <!-- SELLING -->
-        SELLING<br>
-        equivalent amount of price and bitcoin  received  decimal <br>
-        paylah or paynow code text <br>
-        display bitcoin address
-    </div>
-</ng-container>
+<div fxFill fxLayout="column">
+    <mat-toolbar color="primary" fxFlex="10" fxLayout="row">
+        <span fxFlex="80">My bitcoin app</span>
+        <button mat-raised-button routerLink="/" routerLinkActive="active" fxFlex="20" >Back</button>
+    </mat-toolbar>
+    <mat-spinner></mat-spinner>
+    <ng-container *ngIf="isBuying">
+        <div >
+            <!-- BUYING -->
+            BUYING<br>
+            equivalent amount of price and bitcoin  received decimal <br>
+            display qr code for paylah/paynow <br>
+            allow user to input bitcoin address <br>
+            Bitcoin will be transferred once the SGD funds are wired across.
+        </div>
+    </ng-container>
+    <ng-container *ngIf="!isBuying">
+        <div>
+            <!-- SELLING -->
+            SELLING<br>
+            equivalent amount of price and bitcoin  received  decimal <br>
+            paylah or paynow code text <br>
+            display bitcoin address
+        </div>
+    </ng-container>
+</div>
