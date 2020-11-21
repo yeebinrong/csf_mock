@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,33 +11,39 @@ import { Router } from '@angular/router';
 export class OrderComponent implements OnInit {
   orderForm: FormGroup;
   orderDate;
-  isBuying = true;
-
-  constructor(private fb: FormBuilder, private router: Router) { }
+  loginData;
+  price;
+  unit;
+  constructor(private fb: FormBuilder, private router: Router, private snackBar: MatSnackBar) { 
+    // console.info(this.router.getCurrentNavigation().extras.state);
+  }
 
   ngOnInit(): void {
+    this.price = 123.123; 
     this.orderDate = new Date().toLocaleDateString();
-
     this.orderForm = this.fb.group({
       date: this.fb.control(this.orderDate),
       type: this.fb.control(null, [Validators.required]),
-      unit: this.fb.control('', [Validators.required, Validators.pattern(/^[0-9]*$/)]),
+      price: this.fb.control(this.price),
+      unit: this.fb.control(1, [Validators.required, Validators.pattern(/^[0-9]*$/)]),
     });
+    this.unit = this.orderForm.value.unit || 1;
+    this.loginData = history.state;
+    if (this.loginData.name == undefined) {
+      this.router.navigate(['/']);
+    } else {
+      this.snackBar.open(`You have logged in as ${this.loginData.name}.`, "Dismiss", {
+        duration: 2000,
+      });
+    }
   }
 
   resetForm(f) {
-    f.resetForm({date:this.orderDate});
+    f.resetForm({date:this.orderDate, price:this.price});
   }
 
   processForm(f ) {
-    if (f.value.type == 'buy') {
-      this.isBuying = true;
-    } else if (f.value.type == 'sell') {
-      this.isBuying = false;
-    }
     console.info("proceeding to order/pay")
-    this.router.navigate(['/order/pay']);
-    // f.resetForm({date:this.orderDate});
+    this.router.navigateByUrl('/order/pay', {state: f.value});
   }
-
 }

@@ -26,6 +26,6 @@ export class HomeComponent implements OnInit {
 
   processForm(f ) {
     console.info("proceeding to order")
-    this.router.navigate(['/order']);
+    this.router.navigateByUrl('/order', { state: f.value});
   }
 }

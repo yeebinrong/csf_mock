@@ -1,26 +1,62 @@
-<div fxFill fxLayout="column">
+<div fxFill fxLayout="column" fxLayoutAlign="start center">
     <mat-toolbar color="primary" fxFlex="10" fxLayout="row">
         <span fxFlex="80">My bitcoin app</span>
         <button mat-raised-button routerLink="/order" routerLinkActive="active" fxFlex="20" >Back</button>
     </mat-toolbar>
-    <mat-spinner></mat-spinner>
-    <ng-container *ngIf="isBuying">
-        <div >
-            <!-- BUYING -->
-            BUYING<br>
-            equivalent amount of price and bitcoin  received decimal <br>
-            display qr code for paylah/paynow <br>
-            allow user to input bitcoin address <br>
-            Bitcoin will be transferred once the SGD funds are wired across.
+    <div fxFlex="3"></div>
+    <mat-spinner fxFlex="15"></mat-spinner>
+    Waiting for transaction...<br>
+    <div fxFlex="3"></div>
+    <div fxFlex *ngIf="isBuying" fxLayout="row">
+        <div fxFlex="10"></div>
+        <div fxFlex="80" fxLayout="column">
+            <mat-card fxLayout="column" fxLayoutAlign="center stretch">
+                <mat-card-subtitle class="m-0">
+                <!-- BUYING -->
+                Transaction Type: Buy<br>
+                Price / Unit: {{orderData.price}} / 1<br>
+                Units requested: {{orderData.unit}}<br>
+                Total Cost: {{orderData.unit * orderData.price}}<br>
+                <br>
+                Please transfer the total cost payable to the Paynow account and enter your bitcoin address.<br>
+                </mat-card-subtitle>
+                <div fxLayoutAlign="center">
+                    <img src="../../assets/images/qrcode.png" alt="">
+                </div>
+                <form fxLayout="column" fxLayoutAlign="center stretch">
+                    <mat-form-field>
+                        <input type="text" matInput placeholder="Enter your bitcoin address.">
+                    </mat-form-field>
+                    <button type="button" (click)="createSnackBar()" color="primary" mat-raised-button>I have transferred the money.</button>
+                </form>
+            </mat-card>
         </div>
-    </ng-container>
-    <ng-container *ngIf="!isBuying">
-        <div>
-            <!-- SELLING -->
-            SELLING<br>
-            equivalent amount of price and bitcoin  received  decimal <br>
-            paylah or paynow code text <br>
-            display bitcoin address
+    </div>
+    <div *ngIf="!isBuying" fxLayout="row">
+        <div fxFlex="10"></div>
+        <div fxFlex="80" fxLayout="column">
+            <mat-card fxLayout="column" fxLayoutAlign="center stretch">
+                <mat-card-subtitle class="m-0">
+                <!-- SELLING -->
+                Transaction Type: Sell<br>
+                Price / Unit: {{orderData.price}} / 1<br>
+                Units selling: {{orderData.unit}}<br>
+                Total price: {{orderData.unit * orderData.price}}<br>
+                <br>
+                Please transfer the bitcoin to the following bitcoin address.<br>
+                </mat-card-subtitle>
+                <div fxLayoutAlign="center">
+                    <br>
+                    bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq
+                    <br>
+                </div>
+                <form fxLayout="column" fxLayoutAlign="center stretch">
+                    <mat-form-field>
+                        <input type="text" matInput placeholder="Enter your PAYNOW account number.">
+                    </mat-form-field>
+                    <button type="button" (click)="createSnackBar()" color="primary" mat-raised-button>I have transferred the bitcoin.</button>
+                </form>
+            </mat-card>
         </div>
-    </ng-container>
+    </div>
 </div>
