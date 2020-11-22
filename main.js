@@ -16,7 +16,7 @@ var distDir = __dirname + "/client/dist/csfmock/";
 app.use(express.static(distDir));
 
 app.get('/', (req, resp) => {
-    resp.sendFile('index.html');
+    resp.sendFile('/index.html');
 })
 
 app.use(function (req, res, next) {

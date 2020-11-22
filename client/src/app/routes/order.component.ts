@@ -50,7 +50,7 @@ export class OrderComponent implements OnInit {
   }
 
   getAPIdata () {
-    this.http.get('http://localhost:3000/api/abc').subscribe(data => {
+    this.http.get('https://mybitcoinapptest.herokuapp.com/api/abc').subscribe(data => {
       this.price = data['BTCUSD'].averages.day || 123.123; 
     });
   }
