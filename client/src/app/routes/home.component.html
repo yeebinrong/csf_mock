@@ -23,7 +23,7 @@
                                 <mat-error *ngIf="loginForm.get('contact').invalid">Please enter a valid phone number.</mat-error>
                             </mat-form-field>
                             <mat-form-field>
-                                <input matInput [max]="minDate" [matDatepicker]="dobpicker" formControlName="dob" placeholder="Date of birth. (At least 21 years old)" [value]="25-11-1996">
+                                <input matInput [max]="minDate" [matDatepicker]="dobpicker" formControlName="dob" placeholder="Date of birth. (At least 21 years old)">
                                 <mat-datepicker-toggle matSuffix [for]="dobpicker"></mat-datepicker-toggle>
                                 <mat-datepicker #dobpicker startView="multi-year"></mat-datepicker>
                                 <mat-error *ngIf="loginForm.get('dob').invalid">Please enter a valid date.</mat-error>

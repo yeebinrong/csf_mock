@@ -1111,11 +1111,12 @@ class HomeComponent {
     }
     processForm(f) {
         console.info("proceeding to order");
+        f.value.dob = new Date(f.value.dob);
         this.router.navigateByUrl('/order', { state: f.value });
     }
 }
 HomeComponent.ɵfac = function HomeComponent_Factory(t) { return new (t || HomeComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"])); };
-HomeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HomeComponent, selectors: [["app-home"]], decls: 41, vars: 9, consts: [["fxFill", ""], ["drawer", ""], ["fxFill", "", "fxLayout", "column"], ["color", "primary", "fxFlex", "10"], ["mat-icon-button", "", 1, "mr-1", 3, "click"], ["fxFlex", "", 3, "formGroup", "ngSubmit"], ["logform", "ngForm"], ["fxFlex", "15"], ["fxLayout", "column", "fxFlex", "70", "fxLayoutAlign", "start stretch"], ["fxFlex", "3"], ["fxLayout", "column", "fxFlex", "60"], ["fxLayout", "column", "fxFill", ""], ["fxLayout", "column", "fxFill", "", "fxLayoutAlign", "space-evenly stretch"], ["type", "text", "matInput", "", "formControlName", "name", "placeholder", "Enter your name."], [4, "ngIf"], ["type", "text", "matInput", "", "formControlName", "contact", "placeholder", "Enter your phone number."], ["matInput", "", "formControlName", "dob", "placeholder", "Date of birth. (At least 21 years old)", 3, "max", "matDatepicker", "value"], ["matSuffix", "", 3, "for"], ["startView", "multi-year"], ["dobpicker", ""], ["formControlName", "gender", "fxLayout", "column"], ["value", "Male", 1, "p"], ["value", "Female", 1, "p"], ["fxLayout", "column"], ["type", "submit", "color", "primary", "mat-raised-button", "", 3, "disabled"]], template: function HomeComponent_Template(rf, ctx) { if (rf & 1) {
+HomeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HomeComponent, selectors: [["app-home"]], decls: 41, vars: 8, consts: [["fxFill", ""], ["drawer", ""], ["fxFill", "", "fxLayout", "column"], ["color", "primary", "fxFlex", "10"], ["mat-icon-button", "", 1, "mr-1", 3, "click"], ["fxFlex", "", 3, "formGroup", "ngSubmit"], ["logform", "ngForm"], ["fxFlex", "15"], ["fxLayout", "column", "fxFlex", "70", "fxLayoutAlign", "start stretch"], ["fxFlex", "3"], ["fxLayout", "column", "fxFlex", "60"], ["fxLayout", "column", "fxFill", ""], ["fxLayout", "column", "fxFill", "", "fxLayoutAlign", "space-evenly stretch"], ["type", "text", "matInput", "", "formControlName", "name", "placeholder", "Enter your name."], [4, "ngIf"], ["type", "text", "matInput", "", "formControlName", "contact", "placeholder", "Enter your phone number."], ["matInput", "", "formControlName", "dob", "placeholder", "Date of birth. (At least 21 years old)", 3, "max", "matDatepicker"], ["matSuffix", "", 3, "for"], ["startView", "multi-year"], ["dobpicker", ""], ["formControlName", "gender", "fxLayout", "column"], ["value", "Male", 1, "p"], ["value", "Female", 1, "p"], ["fxLayout", "column"], ["type", "submit", "color", "primary", "mat-raised-button", "", 3, "disabled"]], template: function HomeComponent_Template(rf, ctx) { if (rf & 1) {
         const _r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-drawer-container", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "mat-drawer", null, 1);
@@ -1187,7 +1188,7 @@ HomeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.loginForm.get("contact").invalid);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("max", ctx.minDate)("matDatepicker", _r4)("value", 25 - 11 - 1996);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("max", ctx.minDate)("matDatepicker", _r4);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("for", _r4);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);

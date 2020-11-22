@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
 
   processForm(f ) {
     console.info("proceeding to order")
+    f.value.dob = new Date(f.value.dob);
     this.router.navigateByUrl('/order', { state: f.value});
   }
 }
