@@ -12,8 +12,12 @@ const PORT = parseInt(process.env.PORT) || 3000;
 const API_KEY = process.env.BIT_API;
 
 // Create link to angular build directory
-var distDir = __dirname + "/client/dist/";
+var distDir = __dirname + "/client/dist/csfmock/";
 app.use(express.static(distDir));
+
+app.get('/', (req, resp) => {
+    resp.sendFile('index.html');
+})
 
 app.use(function (req, res, next) {
     //Enabling CORS
@@ -22,6 +26,7 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");
       next();
     });
+
 
 app.get('/api/:url', async (req, resp) => {
     const URL = req.params.url;

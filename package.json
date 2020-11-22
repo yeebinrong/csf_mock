@@ -4,13 +4,8 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "ng": "ng",
-    "start": "node main.js",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e",
-    "postinstall": "ng build --output-path /client/dist/"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js"
   },
   "author": "",
   "license": "ISC",
