@@ -11,6 +11,10 @@ const app = express()
 const PORT = parseInt(process.env.PORT) || 3000;
 const API_KEY = process.env.BIT_API;
 
+// Create link to angular build directory
+var distDir = __dirname + "/client/dist/";
+app.use(express.static(distDir));
+
 app.use(function (req, res, next) {
     //Enabling CORS
     res.header("Access-Control-Allow-Origin", "*");
