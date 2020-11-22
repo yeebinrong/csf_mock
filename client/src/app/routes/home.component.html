@@ -1,43 +1,49 @@
-<div fxFill fxLayout="column">
-    <mat-toolbar color="primary" fxFlex="10">
-        <span>My bitcoin app</span>
-    </mat-toolbar>
-    <form #logform="ngForm" fxFlex [formGroup]="loginForm" (ngSubmit)="processForm(logform)">
-        <div fxFlex="15"></div>
-        <div fxLayout="column" fxFlex="70" fxLayoutAlign="start stretch">
-            <div fxFlex="3"></div>
-            <div fxLayout="column" fxFlex="60">
-                <div fxLayout="column" fxFill>
-                    <mat-card fxLayout="column" fxFill fxLayoutAlign="space-evenly stretch">
-                    <mat-form-field>
-                        <input type="text" matInput formControlName="name" placeholder="Enter your name.">
-                        <mat-error *ngIf="loginForm.get('name').invalid">Please enter a valid name.</mat-error>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input type="text" matInput formControlName="contact" placeholder="Enter your phone number.">
-                        <mat-error *ngIf="loginForm.get('contact').invalid">Please enter a valid phone number.</mat-error>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input matInput [max]="minDate" [matDatepicker]="dobpicker" formControlName="dob" placeholder="Date of birth." [value]="25-11-1996">
-                        <mat-datepicker-toggle matSuffix [for]="dobpicker"></mat-datepicker-toggle>
-                        <mat-datepicker #dobpicker startView="multi-year"></mat-datepicker>
-                        <mat-error *ngIf="loginForm.get('dob').invalid">Please enter a valid date.</mat-error>
-                    </mat-form-field>
-                    <mat-radio-group formControlName="gender" fxLayout="column">
-                        Gender
-                        <mat-radio-button class="p" value="Male">Male</mat-radio-button>
-                        <mat-radio-button class="p" value="Female">Female</mat-radio-button>
-                    </mat-radio-group>
-                    <div fxLayout="column">
-                        <button type="submit" color="primary" mat-raised-button [disabled]="loginForm.invalid">Sign In</button>
+<mat-drawer-container fxFill>
+    <mat-drawer #drawer>This is just for testing! Doesn't do anything :)</mat-drawer>
+    <mat-drawer-content>
+        <div fxFill fxLayout="column">
+            <mat-toolbar color="primary" fxFlex="10">
+                <button (click)="drawer.toggle()" mat-icon-button class="mr-1"><mat-icon>list</mat-icon></button>
+                <span>My bitcoin app
+                </span>
+            </mat-toolbar>
+            <form #logform="ngForm" fxFlex [formGroup]="loginForm" (ngSubmit)="processForm(logform)">
+                <div fxFlex="15"></div>
+                <div fxLayout="column" fxFlex="70" fxLayoutAlign="start stretch">
+                    <div fxFlex="3"></div>
+                    <div fxLayout="column" fxFlex="60">
+                        <div fxLayout="column" fxFill>
+                            <mat-card fxLayout="column" fxFill fxLayoutAlign="space-evenly stretch">
+                            <mat-form-field>
+                                <input type="text" matInput formControlName="name" placeholder="Enter your name.">
+                                <mat-error *ngIf="loginForm.get('name').invalid">Please enter a valid name.</mat-error>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input type="text" matInput formControlName="contact" placeholder="Enter your phone number.">
+                                <mat-error *ngIf="loginForm.get('contact').invalid">Please enter a valid phone number.</mat-error>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput [max]="minDate" [matDatepicker]="dobpicker" formControlName="dob" placeholder="Date of birth." [value]="25-11-1996">
+                                <mat-datepicker-toggle matSuffix [for]="dobpicker"></mat-datepicker-toggle>
+                                <mat-datepicker #dobpicker startView="multi-year"></mat-datepicker>
+                                <mat-error *ngIf="loginForm.get('dob').invalid">Please enter a valid date.</mat-error>
+                            </mat-form-field>
+                            <mat-radio-group formControlName="gender" fxLayout="column">
+                                Gender
+                                <mat-radio-button class="p" value="Male">Male</mat-radio-button>
+                                <mat-radio-button class="p" value="Female">Female</mat-radio-button>
+                            </mat-radio-group>
+                            <div fxLayout="column">
+                                <button type="submit" color="primary" mat-raised-button [disabled]="loginForm.invalid">Sign In</button>
+                            </div>
+                            </mat-card>
+                        </div>
                     </div>
-                    </mat-card>
                 </div>
-            </div>
+            </form>
         </div>
-    </form>
-</div>
-
+    </mat-drawer-content>
+</mat-drawer-container>
 
 
 

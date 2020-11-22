@@ -11,6 +11,14 @@ const app = express()
 const PORT = parseInt(process.env.PORT) || 3000;
 const API_KEY = process.env.BIT_API;
 
+app.use(function (req, res, next) {
+    //Enabling CORS
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");
+      next();
+    });
+
 app.get('/api/:url', async (req, resp) => {
     const URL = req.params.url;
     const ENDPOINT = 'https://apiv2.bitcoinaverage.com/indices/global/ticker/short?crypto=BTC&fiat=USD,EUR'

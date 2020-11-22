@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -14,12 +15,12 @@ export class OrderComponent implements OnInit {
   loginData;
   price;
   unit;
-  constructor(private fb: FormBuilder, private router: Router, private snackBar: MatSnackBar) { 
+  constructor(private fb: FormBuilder, private router: Router, private snackBar: MatSnackBar, private http: HttpClient) { 
     // console.info(this.router.getCurrentNavigation().extras.state);
   }
 
   ngOnInit(): void {
-    this.price = 123.123; 
+    this.getAPIdata();
     this.orderDate = new Date().toLocaleDateString();
     this.orderForm = this.fb.group({
       date: this.fb.control(this.orderDate),
@@ -44,6 +45,13 @@ export class OrderComponent implements OnInit {
 
   processForm(f ) {
     console.info("proceeding to order/pay")
+    f.value.price = this.price;
     this.router.navigateByUrl('/order/pay', {state: f.value});
+  }
+
+  getAPIdata () {
+    this.http.get('http://localhost:3000/api/abc').subscribe(data => {
+      this.price = data['BTCUSD'].averages.day || 123.123; 
+    });
   }
 }
