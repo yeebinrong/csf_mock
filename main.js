@@ -15,10 +15,12 @@ const API_KEY = process.env.BIT_API;
 var distDir = __dirname + "/client/dist/csfmock/";
 app.use(express.static(distDir));
 
+// direct to client side file
 app.get('/', (req, resp) => {
     resp.sendFile('/index.html');
 })
 
+// needed for some security CORS thingy
 app.use(function (req, res, next) {
     //Enabling CORS
     res.header("Access-Control-Allow-Origin", "*");
@@ -27,7 +29,7 @@ app.use(function (req, res, next) {
       next();
     });
 
-
+// api call
 app.get('/api/:url', async (req, resp) => {
     const URL = req.params.url;
     const ENDPOINT = 'https://apiv2.bitcoinaverage.com/indices/global/ticker/short?crypto=BTC&fiat=USD,EUR'

@@ -17,9 +17,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.minDate = new Date(new Date().setFullYear(new Date().getFullYear() - 21));
     this.loginForm = this.fb.group({
-      name: this.fb.control('bin rong', [Validators.required, Validators.pattern(/^[a-zA-Z ]*$/)]),
-      contact: this.fb.control('83540269', [Validators.required, Validators.maxLength(13), Validators.pattern(/[6|8|9]\d{7}|\+65[6|8|9]\d{7}|\+65\s[6|8|9]\d{7}/)]),
-      gender: this.fb.control('Male', [Validators.required]),
+      name: this.fb.control('', [Validators.required, Validators.pattern(/^[a-zA-Z ]*$/)]),
+      contact: this.fb.control('', [Validators.required, Validators.maxLength(13), Validators.pattern(/[6|8|9]\d{7}|\+65[6|8|9]\d{7}|\+65\s[6|8|9]\d{7}/)]),
+      gender: this.fb.control('', [Validators.required]),
       dob: this.fb.control(this.minDate, [Validators.required]),
     });
   }
